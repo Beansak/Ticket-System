@@ -1,0 +1,73 @@
+<%- include("./../partials/header.ejs") %>
+
+<form method="post" action="/createTicket" enctype="multipart/form-data" id="ticketForm">
+    <label>Title</label>
+    <a id="titleCounter">0 / 25 characters used</a>
+    <input type="text" id="t_title" name="t_title" maxlength="25" required oninput="updateCounter()">
+    
+    
+    <label>Category</label>
+    <select name="t_category" required>
+        <option value="" disabled selected>Choose a category</option>
+        <% for (const category of allCategories) { %>
+            <option value="<%= category.category_name %>"><%= category.category_name %></option>
+        <% } %>
+    </select>  
+    
+    <label>Description</label>
+    <a id="descriptionCounter">0 / 1300 characters used</a>
+    <textarea name="t_description" rows="5" required maxlength="1300" oninput="updateCounter()"></textarea>
+    
+    
+    <label>Upload Files (Max <%= config_file.file_amout %> files, <%= config_file.file_size_mb %>MB each)</label>
+    <input type="file" name="images" id="images" multiple accept=".png, .jpg, .jpeg, .doc, .pdf">
+    <br>
+    
+    <input class="button_filter" id="button_green" type="submit" value="Create">
+</form>
+
+<script>
+    const file_amount = "<%= config_file.file_amout %>"; 
+    const file_size = "<%= config_file.file_size_mb %>";
+    
+    function updateCounter() {
+        const titleInput = document.getElementById('t_title');
+        const titleCounter = document.getElementById('titleCounter');
+        titleCounter.textContent = `${titleInput.value.length} / ${titleInput.maxLength} characters used`;
+
+        const descriptionInput = document.querySelector('textarea[name="t_description"]');
+        const descriptionCounter = document.getElementById('descriptionCounter');
+        descriptionCounter.textContent = `${descriptionInput.value.length} / ${descriptionInput.maxLength} characters used`;
+    }
+
+    document.getElementById('ticketForm').addEventListener('submit', function(event) {
+    const fileInput = document.getElementById('images');
+    const files = fileInput.files;
+    
+    
+    // Check file count
+    if (files.length > file_amount) {
+        alert("You can only upload a maximum of "+ file_amount + " files.");
+        event.preventDefault(); // Prevent form submission
+        return;
+    }
+    
+    // Check file size (max 5MB per file)
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+
+        // Check if file size exceeds limit
+        if (file.size > file_size * 1024 * 1024) {
+            alert(`The file "${file.name}" exceeds the ${file_size} MB limit.`);
+            event.preventDefault(); // Prevent form submission
+            return;
+        }
+
+        // Log the filename with special characters correctly
+       
+    }
+});
+
+</script>
+
+<%- include("./../partials/footer.ejs") %>

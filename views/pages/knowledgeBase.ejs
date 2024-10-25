@@ -1,0 +1,92 @@
+<%- include("./../partials/header.ejs") %>
+
+<div class="admin-section">
+    <div class="section-container">
+        <h2>Create Knowledge Base Entry</h2>
+        <details>
+           <summary>Open Create menu</summary>
+
+        
+        <form method="post" action="/knowledgeBase" id="ticketForm" class="category-form">
+            
+            <label>Title</label>
+            <a id="titleCounter">0 / 50 characters used</a>
+            <input type="text" id="t_title" name="t_title" maxlength="50" required oninput="updateCounter()">
+
+           
+            <label for="t_category">Category:</label>
+            <select name="t_category" id="t_category" required>
+                <option value="" disabled selected>Choose a category</option>
+                <% for (const category of allCategories) { %>
+                    <option value="<%= category.category_name %>"><%= category.category_name %></option>
+                <% } %>
+            </select>  
+
+            
+            <label for="problem">Problem:</label>
+            <a id="problemCounter">0 / 1000 characters used</a>
+            <textarea name="problem" id="problem" rows="5" required maxlength="1000" oninput="updateCounter()"></textarea>
+            
+            <label for="solution">Solution:</label>
+            <a id="solutuionCounter">0 / 1000 characters used</a>
+            <textarea name="solution" id="solution" rows="5" required maxlength="1000" oninput="updateCounter()"></textarea>
+            
+           
+            <input class="button_filter" id="button_green" type="submit" value="Create">
+            <input type="hidden" name="action" value="create">
+        </form>
+    </div>
+</div>
+
+</details>
+
+<div class="admin-section">
+    <div class="section-container">
+        <h2>Knowledge Base Entries</h2>
+        <div class="ticket-search-section">
+            <form method="post" action="/knowledgeBaseSearch" class="search-container">
+                <div><select name="search" id="search" style="width: 50%;">
+                    <option value="" selected disabled>Filter by Category</option>
+                    <% for (const category of allCategories) { %>
+                        <option value="<%= category.category_name %>"><%= category.category_name %></option>
+                    <% } %>
+                </select>   <input class="button_filter" id="button_green" type="submit" value="Search"></div>
+            </form>
+        
+        <form method="post" action="/knowledgeBase" id="ticketForm" class="category-form">
+            <% for (const knowledge of allKnowledge) { %>
+                
+                <details>
+                   
+                    <summary><%= knowledge.title %> - <%= knowledge.email %></summary>
+                    <p><strong>Category:</strong> <%= knowledge.kategori %></p>
+                   
+                    <p>Problem:</p>
+                    <p><textarea id="comment" name="comment" rows="3" required maxlength="200" readonly><%= knowledge.problem %></textarea></p>
+                    <p>Solution:</p>
+                    <p><textarea id="comment" name="comment" rows="3" required maxlength="200" readonly><%= knowledge.solution %></textarea></p>
+                </details>
+            <% } %>
+        </form>
+    </div>
+</div>
+
+<script>
+
+    function updateCounter() {
+        const titleInput = document.querySelector('input[name="t_title"]');
+        const problemInput = document.querySelector('textarea[name="problem"]');
+        const solutionInput = document.querySelector('textarea[name="solution"]');
+        const titleCounter = document.getElementById('titleCounter');
+        const problemCounter = document.getElementById('problemCounter');
+        const solutuionCounter = document.getElementById('solutuionCounter');
+        
+     
+        titleCounter.textContent = `${titleInput.value.length} / ${titleInput.maxLength} characters used`;
+        problemCounter.textContent = `${problemInput.value.length} / ${problemInput.maxLength} characters used`;
+        solutuionCounter.textContent = `${solutionInput.value.length} / ${solutionInput.maxLength} characters used`;
+   
+    }
+</script>
+
+<%- include("./../partials/footer.ejs") %>

@@ -1,0 +1,5 @@
+DROP DATABASE IF EXISTS ticket;
+
+CREATE DATABASE ticket;
+
+USE ticket;

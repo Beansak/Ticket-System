@@ -1,0 +1,24 @@
+<%- include("./../partials/header.ejs") %>
+
+
+<form method="post" action="/CreateComment/<%= allTickets[0].id %>">
+
+    <label>Create Comment:</label>
+    <a id="descriptionCounter">0 / 200 characters used</a>
+    <textarea name="t_description" rows="5" required maxlength="200" oninput="updateCounter()"></textarea>
+    
+    <input class="button_filter" id="button_green" type="submit" value="Create">
+    <input type="hidden" name="action" value="create">
+
+</form>
+
+</article>
+<%- include("./../partials/footer.ejs") %>
+
+<script>
+    function updateCounter() {
+        const descriptionInput = document.querySelector('textarea[name="t_description"]');
+        const descriptionCounter = document.getElementById('descriptionCounter');
+        descriptionCounter.textContent = `${descriptionInput.value.length} / ${descriptionInput.maxLength} characters used`;
+    }
+</script>

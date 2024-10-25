@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title><%=title%></title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/style/style.css">
+    </head>
+    <ul>
+        <header class="main-header">
+        
+            <% if (isLoggedIn) { %>
+                <div class="nav-left">
+                <% if (isLoggedIn) { %>
+                    <li><a href="/index">Index</a></li>
+                    <li><a href="/createTicket">Create Tickets</a></li>
+                    <li><a href="/allTickets">View Tickets</a></li>
+                <% if (user_role == 'Admin') { %>
+                    <li><a href="/adminTools">Admin Tools</a></li>
+                    <li><a href="/knowledgeBase">knowledge Base</a></li>
+                    </div>
+                <% } %>
+                
+                    </div>
+                <div class="nav-left">
+                <% } if (!isLoggedIn) { %>
+                    <li><a href="/index">Index</a></li>
+                    </div>
+                    <div class="nav-right"><li><a href="/login">Log-In</a></li>
+                    </div>    
+                <% } if (isLoggedIn) { %>
+                    <div class="nav-right"><li><a href="/logout">Log-Out</a></li></div>
+                <% } %>
+            
+            <% }if (!isLoggedIn){%>
+                <li><a href="/index">Index</a></li>
+                    </div>
+                    <div class="nav-right"><li><a href="/login">Log-In</a></li>
+                    </div>    
+            <% }if (isLoggedIn && user_role != 'Admin' && isLoggedIn && user_role != 'User') {%>
+                <div class="nav-right"><li><a href="/logout">Log-Out</a></li></div>
+            <% } %>
+        
+        </header>
+    </ul>
+
+
+
+    

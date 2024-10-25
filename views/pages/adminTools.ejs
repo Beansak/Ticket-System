@@ -1,0 +1,44 @@
+<%- include("./../partials/header.ejs") %>
+
+<div class="admin-section">
+    <div class="section-container">
+        <h2>Create Category</h2>
+        <form method="post" action="/adminTools" class="category-form">
+            <label for="n_category">Add Category:</label>
+            <input type="text" id="n_category" name="n_category" maxlength="25" required>
+            <input id="button_green" type="submit" value="Create">
+            <input type="hidden" name="action" value="create">
+        </form>
+
+        <form method="post" action="/adminTools" class="delete-form">
+            <label for="t_category">Delete Category:</label>
+            <select id="t_category" name="t_category" required>
+                <option value="" disabled selected>Choose a category to remove</option>
+                <% for (const category of allCategories) { %>
+                    <option value="<%= category.id %>"><%= category.category_name %></option>
+                <% } %>
+            </select>  
+            <input type="hidden" name="action" value="delete">
+            <input id="red_button" type="submit" value="Delete">
+        </form>
+    </div>
+
+    <div class="section-container">
+        <h2>Create Account</h2>
+        <form method="post" action="/adminTools" class="account-form">
+            <label for="u_email">Email:</label>
+            <input type="text" id="u_email" name="u_email" maxlength="45" required>
+
+            <label for="u_role">Role:</label>
+            <select id="u_role" name="u_role" required>
+                <option value="" disabled selected>Choose a role</option>
+                <option value="User">User</option>
+                <option value="Admin">Admin</option>
+            </select>  
+            <input type="hidden" name="action" value="create_user">
+            <input id="button_green" type="submit" value="Create User">
+        </form>
+    </div>
+</div>
+
+<%- include("./../partials/footer.ejs") %>

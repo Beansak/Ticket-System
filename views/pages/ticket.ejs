@@ -1,0 +1,123 @@
+<%- include("./../partials/header.ejs") %>
+<form method="post" action="/ticket/<%= allTickets[0].id %>">
+<table>
+    <tr>
+        <th>Title</th><th>Category</th><th>User</th><th>Agent</th><th>Created</th><th>Status</th>
+    </tr>
+    
+    <tr>
+        <td><%= allTickets[0].title %></td>
+        
+                <td>
+            <select id="t_category" name="t_category" required >
+                <option value="<%= allTickets[0].kategori %>"><%= allTickets[0].kategori %></option>
+                <% for (const category of allCategories) { %>
+                    <% if (category.category_name !== allTickets[0].kategori) { %>
+                        <option value="<%= category.category_name %>"><%= category.category_name %></option>
+                    <% } %>
+                <% } %>
+            </select> 
+        </td>
+        <td><%= allTickets[0].user %></td>
+        <td><%= allTickets[0].agent %></td>
+        <td><%= new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }).format(new Date(allTickets[0].create_date)) %></td>
+        <% if (user_role == 'Admin') { %>
+            <td>
+                <select name="status" required>
+                    <option value="open" <%= allTickets[0].status === 'open' ? 'selected' : '' %>>Open</option>
+                    <option value="closed" <%= allTickets[0].status === 'closed' ? 'selected' : '' %>>Closed</option>
+                </select>
+            </td>
+        <% } else if (user_role == 'User') { %>
+            <td><%= allTickets[0].status %></td>
+        <% } %>
+    </tr>
+</table>
+
+
+    <% if (allTickets[0].user == account_email) { %>
+        <p><label>Description</label></p>
+        <textarea id="description" name="t_description" rows="5" required maxlength="1337" style="width: 90%;"><%= allTickets[0].beskrivning %></textarea>        
+    <% } else { %>
+        <label>Description</label>
+    <textarea id="description" name="t_description" rows="5" required maxlength="1337" readonly style="width: 90%;"><%= allTickets[0].beskrivning %></textarea> 
+    <% } %> 
+        <input type="hidden" name="action" value="update"> 
+        <% if (user_role == 'User') { %> 
+        <input type="hidden" name="status" value="<%= allTickets[0].status %>">
+        <% } %> 
+        <input type="submit" value="Update">
+        </form> 
+    
+
+<% if (user_role == 'Admin' && allTickets[0].agent == 'unassigned') { %>
+    <form method="post" action="/ticket/<%= allTickets[0].id %>">
+        <input type="hidden" name="action" value="claim">
+        <input id="button_green" type="submit" value="Claim">
+    </form>
+<% } %>
+
+<% if (user_role == 'Admin' && allTickets[0].agent != 'unassigned' && allTickets[0].agent == account_email) { %>
+    <form method="post" action="/ticket/<%= allTickets[0].id %>">
+        <input type="hidden" name="action" value="unclaim">
+        <input id="button_green" type="submit" value="Unclaim">
+    </form>
+<% } %>
+
+<% if (user_role == 'Admin') { %>
+    <form method="post" action="/ticket/<%= allTickets[0].id %>">
+        <input type="hidden" name="action" value="delete">
+        <input id="red_button" type="submit" value="Delete">
+    </form>
+<% } %>
+</div>
+</div>
+<div class="admin-section">
+<div class="section-container">
+<p>
+    <label>Files</label>
+    <% for (const file of allfiles) { %>
+        <a href="../<%= file.file_path %>" target="_blank"><%= file.file_name %></a> |
+    <% } %>
+</p>
+</div>
+</div>
+
+<div class="admin-section">
+<div class="section-container">
+    <a href="/CreateComment/<%= allTickets[0].id %>">Create Comment</a>
+    <details>
+        <summary>Comments:</summary>
+
+
+
+
+<% for (const comment of allComments) { %>
+    <p><%= comment.email %>:</p>
+    <p><textarea id="comment" name="comment" rows="3" required maxlength="200" readonly style="width: 80%;"><%= comment.beskrivning %></textarea></p>     
+<% } %>
+</div>
+</div>
+</details>
+<div class="admin-section">
+    <div class="section-container">
+        <p>Relevant Knowledge Base Entries:</p>
+<form method="post" action="/knowledgeBase" id="ticketForm" class="category-form">
+    <% for (const knowledge of allKnowledge) { %>
+        
+        <details>
+           
+            <summary><%= knowledge.title %> - <%= knowledge.email %></summary>
+            <p><strong>Category:</strong> <%= knowledge.kategori %></p>
+           
+            <p>Problem:</p>
+            <p><textarea id="comment" name="comment" rows="3" required maxlength="200" readonly><%= knowledge.problem %></textarea></p>
+            <p>Solution:</p>
+            <p><textarea id="comment" name="comment" rows="3" required maxlength="200" readonly><%= knowledge.solution %></textarea></p>
+        </details>
+    <% } %>
+</form>
+</div>
+</div>
+
+<%- include("./../partials/footer.ejs") %>

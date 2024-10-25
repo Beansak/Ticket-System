@@ -1,0 +1,7 @@
+{
+    "host":     "isaks-ASUS.local",
+    "user":     "dbadm",
+    "password": "P@ssw0rd",
+    "database": "ticket",
+    "multipleStatements": true
+}

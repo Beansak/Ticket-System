@@ -1,0 +1,48 @@
+<%- include("./../partials/header.ejs") %>
+
+<div class="ticket-search-section">
+    <h1>Search for ticket</h1>
+    <form method="post" action="/allTickets" class="search-container">
+        <div><input type="text" name="s_c" placeholder="Search..." class="search-input" style="width: 70%;"> <input class="button_filter" id="button_green" type="submit" value="Search"></div>
+    </form>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>User</th>
+            <th>Agent</th>
+            <th>Status</th>
+            <th>Ticket</th>
+        </tr>
+        <% for (const ticket of allTickets) {%>
+            <tr data-ticket-id="<%= ticket.id %>">
+                <td><%= ticket.id %></td>
+                <td><%= ticket.title %></td>
+                <td><%= ticket.kategori %></td>
+                <td><%= ticket.user %></td>
+                <td><%= ticket.agent %></td>
+                <td><%= ticket.status %></td>
+                <td>
+                    <a href="/ticket/<%= ticket.id %>">View Ticket</a>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+</div>
+
+<%- include("./../partials/footer.ejs") %>
+
+<script>
+    const rows = document.querySelectorAll('table tbody tr');
+
+    rows.forEach(row => {
+        row.addEventListener('click', () => {
+            const ticketId = row.getAttribute('data-ticket-id');
+            if (ticketId != null) {
+                window.location.href = `/ticket/${ticketId}`;
+            }
+        });
+    });
+</script>
