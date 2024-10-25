@@ -61,6 +61,9 @@ At the start there exists two roles hard-coded into the system:
 * user@gmail.com
 
 Create an account with Auth0 with the email admin@gmail.com and you can then create more users/admins with the admin tools in the program.
+### Testing
+The system has no integrated test so to test the system you have to start it upp and manually test it. 
+Testing various outputs can be done using ```console.log("Example");``` to allow for viewing exactly what is sent.
 
 ## License
 
