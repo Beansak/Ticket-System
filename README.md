@@ -1,22 +1,18 @@
 # Ticket system
 
-## Introduction
+Introduction: This is a program that allows for users to create tickets and for Agents to se and respond to the tickets. 
+Allowing for an easier comunication between users and the IT-department.
 
-Its a program that allows for users to create tickets and for Agents to se and respond to the tickets. 
-Allowing for an easier comunication betweene the users and the IT-department
+This program is using node.js so you need to install node JS, you can do this here: https://nodejs.org/en
+### Database:
 
-<p align="center"><img src=screenshots/Skärmbild 2024-10-25 132413.png></p>
+To acces the database you will use MariaDB:
+To use MariaDB follow this guide to configure the config ticket.json file: https://mariadb.com/get-started-with-mariadb/
 
-
-## Architecture Overview (optional)
-
-TODO: Add simple diagram that explains the architecture.
-
-## How to Use
-
-### Prerequisites
-
-TODO: Explain which steps and dependencies are required to run and build the project (e.g., pip install -r requirements.txt)
+in the config/ticket.json file change:
+* host
+* user
+* password
 
 ### Build
 
