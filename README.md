@@ -5,8 +5,8 @@
 Its a program that allows for users to create tickets and for Agents to se and respond to the tickets. 
 Allowing for an easier comunication betweene the users and the IT-department
 
-TODO: Add image that helps to understand the project.
-This could be an architectural diagram or a screenshot of the application.
+<p align="center"><img src=screenshots/Skärmbild 2024-10-25 132413.png></p>
+
 
 ## Architecture Overview (optional)
 
