@@ -66,4 +66,4 @@ Create an account with Auth0 with the email admin@gmail.com and you can then cre
 
 Copyright © 2024 Isak Klaesson
 
-This work (source code) is licensed under MIT.
+This work (source code) is licensed under [MIT](./LICENSE).
