@@ -14,6 +14,8 @@ in the config/ticket.json file change:
 * user
 * password
 
+These configs must match your own databse to establish a connection.
+
 ### Email
 
 In the file config/email.json you have to config the email adress the notifications will be sent from.
