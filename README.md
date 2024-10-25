@@ -14,13 +14,23 @@ in the config/ticket.json file change:
 * user
 * password
 
-### Build
+### Email
 
-TODO: Explain how the whole project can be build.
+In the file config/email.json you have to config the email adress the notifications will be sent from.
 
-### Test
+### Auth0
 
-TODO: Explain how unit- or integreation tests can be executed.
+The third party SSO the program uses is Auth0, set up your own Auth0 by following this guide: https://auth0.com/docs/get-started
+
+Keep in mind that the port the program is running on is 1337
+
+In config/SSO.json you have to configure the settings for the log in function to work:
+* secret (64 character long random string)
+* Client ID
+* issuerBaseURL
+
+### Packages
+Before any packages can be installed you need to initiate ```package.json```: do this by opening the project folder and typing npm init in the terminal.
 
 ### Run
 
