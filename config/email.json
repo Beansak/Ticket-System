@@ -1,7 +1,7 @@
 {
-    "service": "gmail",  
+    "service": "choose a service ex:gmail",  
     "auth": {
-      "user": "isak.klaesson2024@gmail.com",  
-      "pass": "zrin usqy lazx thke"
+      "user": "email adress for sending notifications",  
+      "pass": "secret password (get from google via two step)"
     }
 }
