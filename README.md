@@ -30,7 +30,20 @@ In config/SSO.json you have to configure the settings for the log in function to
 * issuerBaseURL
 
 ### Packages
-Before any packages can be installed you need to initiate ```package.json```: do this by opening the project folder and typing npm init in the terminal.
+Before any packages can be installed you need to initiate ```package.json```: do this by opening the project folder and typing ```npm init``` in the terminal.
+
+After this you will need to install these packages:
+* express
+* jsonwebtoken
+* multer
+* ejs
+* promise-mysql
+* node-cron
+* nodemailer
+* express-openid-connect
+
+To install these packages you need to enter the project folder and type this command for every package:
+```npm install "package"``` #example: ```npm install express```
 
 ### Run
 
