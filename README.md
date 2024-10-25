@@ -45,9 +45,13 @@ After this you will need to install these packages:
 To install these packages you need to enter the project folder and type this command for every package:
 ```npm install "package"``` #example: ```npm install express```
 
-### Run
+### Starting roles
 
-TODO: Explain how to run the project (client, server etc.).
+At the start there exists two roles hard-coded into the system:
+* admin@gmail.com
+* user@gmail.com
+
+Create an account with Auth0 with the email admin@gmail.com and you can then create more users/admins with the admin tools in the program.
 
 ## License
 
