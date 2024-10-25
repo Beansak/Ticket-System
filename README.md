@@ -29,6 +29,13 @@ In config/SSO.json you have to configure the settings for the log in function to
 * Client ID
 * issuerBaseURL
 
+### File limits
+In the config/file_upload file you can change the limits of the amout of files and the size of files uploaded for each ticket the start amount is 5 files and 5 mb max size per file:
+
+* file_amout
+* file_size_mb
+ Keep the variables as numbers.
+
 ### Packages
 Before any packages can be installed you need to initiate ```package.json```: do this by opening the project folder and typing ```npm init``` in the terminal.
 
