@@ -1,8 +1,8 @@
 {
     "authRequired": false,
     "auth0Logout": true,
-    "secret": "YDupC0DNWSdmZwPV513CYg0L7Wm0cqzDTIutZzZldMPJgCfBQlYjNf6OkgOW2fjr",
+    "secret": "Random string of 64 characters",
     "baseURL": "http://localhost:1337",
-    "clientID": "pjMON3uvdT95FmSbwkNdKoaabgu31UMu",
-    "issuerBaseURL": "https://dev-vidz5cbe0s05dsps.us.auth0.com"
+    "clientID": "add clientId",
+    "issuerBaseURL": "add issuerBaseUrl"
 }
