@@ -54,6 +54,9 @@ After this you will need to install these packages:
 To install these packages you need to enter the project folder and type this command for every package:
 ```npm install "package"``` #example: ```npm install express```
 
+### Build sql
+To initialise the sql code you must navigate to sql/tickets and use mariadb to do ```source reset.sql``` This will run the sql code.
+
 ### Starting roles
 
 At the start there exists two roles hard-coded into the system:
