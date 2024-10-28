@@ -55,7 +55,14 @@ To install these packages you need to enter the project folder and type this com
 ```npm install "package"``` #example: ```npm install express```
 
 ### Build sql
-To initialise the sql code you must navigate to sql/tickets and use mariadb to do ```source reset.sql``` This will run the sql code.
+To initialise the sql code you must navigate to sql/tickets, enter mariadb and execute ```source reset.sql``` This will run the sql code. 
+Use ```source "Filename"``` with mariaDB to initialise sql files
+
+### Start program
+To start the program you need to navigate to the beginning in the programs file where the index.js file is located. Then run the command ```node index.js``` to start the program. The program will start using port 1337.
+
+To get acces to the webpage write http://localhost:1337 in the header bar of your web browser.
+
 
 ### Starting roles
 
