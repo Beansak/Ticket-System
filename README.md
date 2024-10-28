@@ -19,6 +19,13 @@ These configs must match your own databse to establish a connection.
 ### Email
 
 In the file config/email.json you have to config the email adress the notifications will be sent from.
+* Service
+* Your author user and password
+
+Choose a service like gmail, and create an author
+"user": "email adress for sending notifications",  
+"pass": "secret password (get from google via two step verification)"
+  
 
 ### Auth0
 
